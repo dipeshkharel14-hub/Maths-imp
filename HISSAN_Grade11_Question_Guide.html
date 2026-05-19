@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grade 11 Math — Targeted Question Guide</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+  :root {
+    --bg:      #06070a;
+    --surf:    #0f1117;
+    --surf2:   #181c26;
+    --border:  #1f2433;
+    --border2: #2a3045;
+    --gold:    #f0b429;
+    --gold2:   #ffd166;
+    --red:     #ff5c5c;
+    --green:   #3dd68c;
+    --blue:    #4e9bff;
+    --purple:  #b57bee;
+    --teal:    #38bdf8;
+    --text:    #c9d1e0;
+    --muted:   #5e6a84;
+    --white:   #f0f4ff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #06070a 0%, #0a0f1e 60%, #06070a 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 44px 24px 36px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(240,180,41,.07), transparent);
+    pointer-events: none;
+  }
+  .hero-eye {
+    display: inline-block;
+    background: var(--gold);
+    color: #000;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 2px;
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(26px, 5vw, 52px);
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+  .hero h1 em { color: var(--gold); font-style: normal; }
+  .hero-sub {
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin-bottom: 22px;
+  }
+  .hero-chips {
+    display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+  }
+  .chip {
+    background: var(--surf2);
+    border: 1px solid var(--border2);
+    color: var(--text);
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+  .chip.g { border-color: rgba(61,214,140,.35); color: var(--green); }
+  .chip.r { border-color: rgba(255,92,92,.35);  color: var(--red); }
+  .chip.b { border-color: rgba(78,155,255,.35); color: var(--blue); }
+
+  /* ── LAYOUT ── */
+  .page { max-width: 1020px; margin: 0 auto; padding: 0 18px; }
+
+  /* ── NAV BAR ── */
+  .qnav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(6,7,10,.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 18px;
+    display: flex; gap: 0; overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .qnav::-webkit-scrollbar { display: none; }
+  .qnav-item {
+    padding: 13px 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: color .2s, border-color .2s;
+  }
+  .qnav-item:hover { color: var(--text); }
+  .qnav-item.active { color: var(--gold); border-color: var(--gold); }
+
+  /* ── SECTION ── */
+  .q-section {
+    padding: 36px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── QUESTION HEADER ── */
+  .q-header {
+    display: flex; align-items: flex-start; gap: 16px;
+    margin-bottom: 24px;
+  }
+  .q-badge {
+    font-family: 'Syne', sans-serif;
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1;
+    min-width: 56px;
+    text-align: center;
+  }
+  .q-header-info {}
+  .q-tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin-bottom: 6px;
+  }
+  .q-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+  }
+  .q-marks {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    margin-top: 4px;
+  }
+
+  /* color themes per question */
+  .q12 .q-badge { color: #4e9bff; }
+  .q12 .q-tag  { background: rgba(78,155,255,.12); color: #4e9bff; border: 1px solid rgba(78,155,255,.3); }
+  .q12 .q-badge { color: #4e9bff; }
+
+  .q13 .q-badge { color: #3dd68c; }
+  .q13 .q-tag  { background: rgba(61,214,140,.12); color: #3dd68c; border: 1px solid rgba(61,214,140,.3); }
+
+  .q15 .q-badge { color: #b57bee; }
+  .q15 .q-tag  { background: rgba(181,123,238,.12); color: #b57bee; border: 1px solid rgba(181,123,238,.3); }
+
+  .q16 .q-badge { color: #f0b429; }
+  .q16 .q-tag  { background: rgba(240,180,41,.12); color: #f0b429; border: 1px solid rgba(240,180,41,.3); }
+
+  .q19 .q-badge { color: #ff5c5c; }
+  .q19 .q-tag  { background: rgba(255,92,92,.12); color: #ff5c5c; border: 1px solid rgba(255,92,92,.3); }
+
+  .q20 .q-badge { color: #38bdf8; }
+  .q20 .q-tag  { background: rgba(56,189,248,.12); color: #38bdf8; border: 1px solid rgba(56,189,248,.3); }
+
+  .q21 .q-badge { color: #fb923c; }
+  .q21 .q-tag  { background: rgba(251,146,60,.12); color: #fb923c; border: 1px solid rgba(251,146,60,.3); }
+
+  .q22 .q-badge { color: #f472b6; }
+  .q22 .q-tag  { background: rgba(244,114,182,.12); color: #f472b6; border: 1px solid rgba(244,114,182,.3); }
+
+  /* ── PANELS ── */
+  .panels { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 12px 0; }
+  @media(max-width:640px){ .panels { grid-template-columns: 1fr; } }
+
+  .panel {
+    background: var(--surf);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .panel.full { grid-column: 1 / -1; }
+  .panel-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .panel-label .icon { margin-right: 5px; }
+
+  ul.dot-list { list-style: none; }
+  ul.dot-list li {
+    padding: 5px 0 5px 16px;
+    position: relative;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(31,36,51,.7);
+  }
+  ul.dot-list li:last-child { border-bottom: none; }
+  ul.dot-list li::before {
+    content: '›';
+    position: absolute; left: 0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* ── PATTERN CARDS ── */
+  .patterns { display: flex; flex-direction: column; gap: 10px; margin: 12px 0; }
+  .pat {
+    background: var(--surf);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--border2);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+  }
+  .pat.p1 { border-left-color: var(--gold); }
+  .pat.p2 { border-left-color: var(--blue); }
+  .pat.p3 { border-left-color: var(--green); }
+  .pat-head {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 5px;
+  }
+  .pat-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    background: var(--surf2);
+    padding: 2px 7px;
+    border-radius: 3px;
+    color: var(--muted);
+  }
+  .pat-title { font-weight: 600; font-size: 13px; color: var(--white); }
+  .pat-freq {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    margin-left: auto;
+  }
+  .pat-body { font-size: 12.5px; color: var(--text); }
+
+  /* ── FORMULA BOX ── */
+  .fbox {
+    background: var(--surf2);
+    border: 1px solid var(--border2);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin: 8px 0;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    line-height: 2;
+    color: var(--text);
+  }
+  .fbox .hi  { color: var(--gold2); font-weight: 500; }
+  .fbox .red { color: var(--red); }
+  .fbox .grn { color: var(--green); }
+  .fbox .blu { color: var(--blue); }
+
+  /* ── STEP LIST ── */
+  .steps { counter-reset: step; list-style: none; margin: 8px 0; }
+  .steps li {
+    counter-increment: step;
+    display: flex; gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(31,36,51,.6);
+    font-size: 13px;
+    align-items: flex-start;
+  }
+  .steps li:last-child { border-bottom: none; }
+  .steps li::before {
+    content: counter(step);
+    display: flex; align-items: center; justify-content: center;
+    min-width: 22px; height: 22px;
+    background: var(--surf2);
+    border: 1px solid var(--border2);
+    border-radius: 50%;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+
+  /* ── MINIMALIST TIP ── */
+  .tip {
+    background: linear-gradient(135deg, rgba(240,180,41,.08), rgba(240,180,41,.03));
+    border: 1px solid rgba(240,180,41,.25);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 14px;
+    font-size: 13px;
+  }
+  .tip-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 5px;
+  }
+
+  /* ── YEARS ROW ── */
+  .years { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+  .yr {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    padding: 2px 7px;
+    border-radius: 3px;
+    background: rgba(240,180,41,.1);
+    color: var(--gold);
+    border: 1px solid rgba(240,180,41,.2);
+  }
+
+  /* ── GROUP DIVIDERS ── */
+  .group-div {
+    display: flex; align-items: center; gap: 14px;
+    padding: 28px 0 10px;
+    margin-bottom: 4px;
+  }
+  .group-line { flex: 1; height: 1px; background: var(--border); }
+  .group-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ── ALERT ── */
+  .alert {
+    border-radius: 8px; padding: 12px 16px;
+    margin: 16px 0; font-size: 13px;
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .alert-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .alert.warn { background: rgba(255,92,92,.07); border: 1px solid rgba(255,92,92,.25); }
+  .alert.info { background: rgba(78,155,255,.07); border: 1px solid rgba(78,155,255,.25); }
+  .alert.ok   { background: rgba(61,214,140,.07); border: 1px solid rgba(61,214,140,.25); }
+  .alert b    { color: var(--white); }
+
+  /* ── WORKED EG ── */
+  .worked {
+    background: var(--surf2);
+    border: 1px solid var(--border2);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin: 10px 0;
+  }
+  .worked-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--green);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .worked-body {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--text);
+    line-height: 2;
+  }
+  .worked-body .step-line { color: var(--gold2); }
+
+  h4 { color: var(--white); font-size: 13px; font-weight: 600; margin: 14px 0 6px; }
+  strong { color: var(--white); }
+  footer {
+    text-align: center; padding: 24px;
+    color: var(--muted); font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    border-top: 1px solid var(--border);
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eye">Grade 11 · HISSAN · Mat. 401 — Targeted Study Guide</div>
+  <h1>Master <em>Exactly</em> These<br>Question Numbers</h1>
+  <div class="hero-sub">Based on 10 full exam sets from the Old is Gold PDF · No Calculus included</div>
+  <div class="hero-chips">
+    <span class="chip b">Q12 — Matrices</span>
+    <span class="chip g">Q13 — Functions / Sets / Sequences</span>
+    <span class="chip">Q15 — Vectors</span>
+    <span class="chip">Q16 — Statistics (Skewness)</span>
+    <span class="chip r">Q19 — Newton-Raphson / Mechanics</span>
+    <span class="chip">Q20 — Group C (Algebra / Sets)</span>
+    <span class="chip">Q21 — Analytic Geometry / Vectors</span>
+    <span class="chip">Q22 — Pair of Lines / Complex / Calc</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="qnav">
+  <div class="qnav-item active">Q12</div>
+  <div class="qnav-item">Q13</div>
+  <div class="qnav-item">Q15</div>
+  <div class="qnav-item">Q16</div>
+  <div class="qnav-item">Q19</div>
+  <div class="qnav-item">——</div>
+  <div class="qnav-item">Q20</div>
+  <div class="qnav-item">Q21</div>
+  <div class="qnav-item">Q22</div>
+</div>
+
+<div class="page">
+
+  <div class="alert info">
+    <div class="alert-icon">ℹ️</div>
+    <div><b>How to read this guide:</b> Every question number below maps directly to what the PDF exam sets show at that slot. Patterns, formulas, and steps are extracted from analyzing all 10 model sets. Calculus content has been fully excluded per your instruction.</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- GROUP A: 5-mark questions Q12–Q19      -->
+  <!-- ═══════════════════════════════════════ -->
+
+  <div class="group-div">
+    <div class="group-line"></div>
+    <div class="group-label" style="color:var(--blue)">Group B — 5-Mark Questions</div>
+    <div class="group-line"></div>
+  </div>
+
+  <!-- ══ Q12 ══ -->
+  <div class="q-section q12" id="q12">
+    <div class="q-header">
+      <div class="q-badge">12</div>
+      <div class="q-header-info">
+        <span class="q-tag">Group B · Q.No. 12</span>
+        <div class="q-title">Matrices &amp; Determinants</div>
+        <div class="q-marks">5 marks · Short answer · [1+1+1+1+1] or [2+3] sub-parts</div>
+      </div>
+    </div>
+
+    <div class="alert ok">
+      <div class="alert-icon">✅</div>
+      <div><b>You already know algebra — this is your most reliable 5 marks.</b> Q12 is always Matrices. Most sets break it into 5 one-mark definition/property sub-questions, so even partial knowledge scores well.</div>
+    </div>
+
+    <div class="patterns">
+      <div class="pat p1">
+        <div class="pat-head">
+          <span class="pat-num">PATTERN 1</span>
+          <span class="pat-title">Five 1-mark sub-questions on matrix definitions &amp; properties</span>
+          <span class="pat-freq">Sets 2, 4, 5, 7 — Most common</span>
+        </div>
+        <div class="pat-body">Define: symmetric matrix / skew-symmetric / inverse matrix / odd function / complex number absolute value. Write one property of determinant. State condition for BA to be possible. Write A = ½(A+Aᵀ) + ½(A−Aᵀ).</div>
+        <div class="years"><span class="yr">Set 2</span><span class="yr">Set 4</span><span class="yr">Set 5</span><span class="yr">Set 7</span></div>
+      </div>
+      <div class="pat p2">
+        <div class="pat-head">
+          <span class="pat-num">PATTERN 2</span>
+          <span class="pat-title">Find domain &amp; range of a function + matrix property</span>
+          <span class="pat-freq">Sets 8, 10 — Common</span>
+        </div>
+        <div class="pat-body">Find domain and range of y = √(x²−3x+2) or similar. Find B−A for given matrices. Solve quadratic inequality. This pattern mixes functions and matrices in one Q12.</div>
+        <div class="years"><span class="yr">Set 8</span><span class="yr">Set 10</span></div>
+      </div>
+      <div class="pat p3">
+        <div class="pat-head">
+          <span class="pat-num">PATTERN 3</span>
+          <span class="pat-title">Show f(x) = 3x+5 is bijective on Q→Q, find f⁻¹</span>
+          <span class="pat-freq">Set 6 — Function proof</span>
+        </div>
+        <div class="pat-body">Show the function is one-one and onto. Find inverse. f⁻¹(x) = (x−5)/3.</div>
+        <div class="years"><span class="yr">Set 6</span></div>
+      </div>
+    </div>
+
+    <div class="panels">
+      <div class="panel">
+        <div class="panel-label"><span class="icon">📐</span> Essential Formulas</div>
+        <div class="fbox">
+          <span class="hi">Symmetric:</span> A = Aᵀ  (Aᵀ means transpose)<br>
+          <span class="hi">Skew-symmetric:</span> A = −Aᵀ<br>
+          <span class="hi">Decomposition:</span><br>
+          A = ½(A+Aᵀ) + ½(A−Aᵀ)<br>
+          <span class="hi">Inverse exists if:</span> |A| ≠ 0<br>
+          <span class="hi">A⁻¹ = </span>(1/|A|) · adj(A)<br>
+          <span class="hi">For 2×2:</span> if A = [[a,b],[c,d]]<br>
+          A⁻¹ = (1/ad−bc) · [[d,−b],[−c,a]]<br>
+          <span class="hi">AB possible if:</span> cols of A = rows of B<br>
+          <span class="hi">Order of AB:</span> m×p (if A is m×n, B is n×p)
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-label"><span class="icon">🗂️</span> Key Definitions to Memorise</div>
+        <ul class="dot-list">
+          <li><strong>Identity matrix (I):</strong> square matrix with 1s on diagonal, 0s elsewhere; AI = IA = A</li>
+          <li><strong>Singular matrix:</strong> |A| = 0 (no inverse exists)</li>
+          <li><strong>Non-singular:</strong> |A| ≠ 0 (inverse exists)</li>
+          <li><strong>Cofactor:</strong> (−1)^(i+j) × minor</li>
+          <li><strong>Adjoint:</strong> transpose of cofactor matrix</li>
+          <li><strong>Transpose property:</strong> (AB)ᵀ = BᵀAᵀ</li>
+          <li><strong>Property of det:</strong> |AB| = |A||B|; |Aᵀ| = |A|</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tip">
+      <div class="tip-label">⚡ Minimalist Strategy</div>
+      Q12 is almost always five 1-mark sub-questions. You do NOT need to solve long problems — just write clean one-line definitions. Memorise: symmetric, skew-symmetric, inverse, adjoint, singular/non-singular, order of AB, and the decomposition formula. That alone covers every sub-question seen across all sets.
+    </div>
+  </div>
+
+  <!-- ══ Q13 ══ -->
+  <div class="q-section q13" id="q13">
+    <div class="q-header">
+      <div class="q-badge">13</div>
+      <div class="q-header-info">
+        <span class="q-tag">Group B · Q.No. 13</span>
+        <div class="q-title">Functions · Set Theory · Sequences &amp; Series</div>
+        <div class="q-marks">5 marks · [2+3] or [3+2] sub-parts</div>
+      </div>
+    </div>
+
+    <div class="patterns">
+      <div class="pat p1">
+        <div class="pat-head">
+          <span class="pat-num">PATTERN 1</span>
+          <span class="pat-title">Set theory proof: A∪(B∩C) = (A∪B)∩(A∪C) or De Morgan's law</span>
+          <span class="pat-freq">Sets 5, 9 — Very common</span>
+        </div>
+        <div class="pat-body">Prove distributive law or prove Ā∪B̄ = (A∩B)ᶜ. Use membership/element-wise proof: show x∈LHS ⟹ x∈RHS and vice versa. [2 marks]</div>
+        <div class="years"><span class="yr">Set 5</span><span class="yr">Set 9</span></div>
+      </div>
+      <div class="pat p2">
+        <div class="pat-head">
+          <span class="pat-num">PATTERN 2</span>
+          <span class="pat-title">Quadratic equation roots condition proof + form equation</span>
+          <span class="pat-freq">Sets 1, 3, 7, 8 — Most frequent for part (b)</span>
+        </div>
+        <div class="pat-body">Given α,β are roots of qx²+px+p=0, prove √(α/β)+√(β/α)+√(p/q) = 0. OR: roots of (a²+b²)x²−2(ac+bd)x+(c²+d²)=0 are equal, prove a/b = c/d. [3 marks]</div>
+        <div class="years"><span class="yr">Set 1</span><span class="yr">Set 3</span><span class="yr">Set 7</span><span class="yr">Set 8</span></div>
+      </div>
+      <div class="pat p3">
+        <div class="pat-head">
+          <span class="pat-num">PATTERN 3</span>
+          <span class="pat-title">A.M., G.M., H.M. relation proof or sequence problem</span>
+          <span class="pat-freq">Sets 6, 9 — Common</span>
+        </div>
+        <div class="pat-body">Sum of areas of squares (infinite GP). Define AM, GM, HM, show AM &gt; GM &gt; HM. Or: if a,b,c in GP and a,x,b in AP and b,y,c in AP, prove x,b,y in GP. [3 marks]</div>
+        <div class="years"><span class="yr">Set 6</span><span class="yr">Set 9</span></div>
+      </div>
+    </div>
+
+    <div class="panels">
+      <div class="panel">
+        <div class="panel-label"><span class="icon">📐</span> Key Formulas — Quadratic Roots</div>
+        <div class="fbox">
+          For ax² + bx + c = 0, roots α and β:<br>
+          <span class="hi">Sum:</span>    α + β = −b/a<br>
+          <span class="hi">Product:</span> αβ  = c/a<br>
+          <span class="hi">Discriminant:</span> D = b²−4ac<br>
+          <span class="grn">Equal roots:</span> D = 0 → b²=4ac<br>
+          <span class="red">No real roots:</span> D &lt; 0<br><br>
+          <span class="hi">New equation from roots:</span><br>
+          x² − (α+β)x + αβ = 0
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-label"><span class="icon">📐</span> Key Formulas — Sequences</div>
+        <div class="fbox">
+          <span class="hi">AP:</span>  tₙ = a+(n−1)d<br>
+          <span class="hi">GP:</span>  tₙ = arⁿ⁻¹<br>
+          <span class="hi">Sum AP:</span> Sₙ = n/2[2a+(n−1)d]<br>
+          <span class="hi">Sum GP:</span> Sₙ = a(rⁿ−1)/(r−1) r≠1<br>
+          <span class="hi">Sum GP∞:</span> S∞ = a/(1−r), |r|&lt;1<br>
+          <span class="hi">AM:</span> A = (a+b)/2<br>
+          <span class="hi">GM:</span> G = √(ab)<br>
+          <span class="hi">HM:</span> H = 2ab/(a+b)<br>
+          <span class="hi">Relation:</span> A·H = G² ; A &gt; G &gt; H
+        </div>
+      </div>
+      <div class="panel full">
+        <div class="panel-label"><span class="icon">🔢</span> Steps: Prove Set Identity e.g. A∪(B∩C) = (A∪B)∩(A∪C)</div>
+        <ol class="steps">
+          <li><strong>Step 1 (→):</strong> Let x ∈ A∪(B∩C). Then x∈A OR x∈(B∩C).</li>
+          <li><strong>Case 1:</strong> x∈A ⟹ x∈A∪B AND x∈A∪C ⟹ x∈(A∪B)∩(A∪C) ✓</li>
+          <li><strong>Case 2:</strong> x∈B∩C ⟹ x∈B and x∈C ⟹ x∈A∪B and x∈A∪C ⟹ x∈(A∪B)∩(A∪C) ✓</li>
+          <li><strong>Step 2 (←):</strong> Reverse: Let x∈(A∪B)∩(A∪C). Then x∈A∪B and x∈A∪C.</li>
+          <li><strong>If x∉A:</strong> then x∈B (from x∈A∪B) and x∈C (from x∈A∪C) ⟹ x∈B∩C ⟹ x∈A∪(B∩C) ✓</li>
+          <li><strong>Conclude:</strong> Both sides contain the same elements ∴ LHS = RHS □</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="tip">
+      <div class="tip-label">⚡ Minimalist Strategy</div>
+      For set proofs: always do a two-direction element-wise proof (show x∈LHS⟹x∈RHS, then x∈RHS⟹x∈LHS). For the quadratic root proof questions, the key is always to write α+β = −p/q and αβ = p/q first, then manipulate. The infinite GP square area problem always uses S∞ = a/(1−r) — memorise this formula cold.
+    </div>
+  </div>
+
+  <!-- ══ Q15 ══ -->
+  <div class="q-section q15" id="q15">
+    <div class="q-header">
+      <div class="q-badge">15</div>
+      <div class="q-header-info">
+        <span class="q-tag">Group B · Q.No. 15</span>
+        <div class="q-title">Vectors — Coplanar, Linear Dependence &amp; Combinations</div>
+        <div class="q-marks">5 marks · [3+2] sub-parts</div>
+      </div>
+    </div>
+
+    <div class="alert info">
+      <div class="alert-icon">📌</div>
+      <div>Q15 is <b>always vectors</b> across every single set examined. The two dominant patterns are: (1) prove three vectors are coplanar, and (2) express a vector as a linear combination or show two vectors are linearly dependent/independent.</div>
+    </div>
+
+    <div class="patterns">
+      <div class="pat p1">
+        <div class="pat-head">
+          <span class="pat-num">PATTERN 1</span>
+          <span class="pat-title">Show that three given vectors are coplanar</span>
+          <span class="pat-freq">Sets 1, 3, 5, 6, 8 — Most frequent</span>
+        </div>
+        <div class="pat-body">Given: a⃗ − 2b⃗ + 3c⃗, −2a⃗ + 3b⃗ − 4c⃗, −b⃗ + 2c⃗ are coplanar where a⃗, b⃗, c⃗ are any three vectors. Write as linear combination and show the determinant of coefficients = 0. [3 marks]</div>
+        <div class="years"><span class="yr">Set 1</span><span class="yr">Set 3</span><span class="yr">Set 5</span><span class="yr">Set 6</span><span class="yr">Set 8</span></div>
+      </div>
+      <div class="pat p2">
+        <div class="pat-head">
+          <span class="pat-num">PATTERN 2</span>
+          <span class="pat-title">Express vector r⃗ as linear combination of two given vectors</span>
+          <span class="pat-freq">Sets 5, 9 — Common</span>
+        </div>
+        <div class="pat-body">r⃗ = (8,−5), a⃗ = (2,−3), b⃗ = (−1,−2). Find scalars x, y such that r⃗ = xa⃗ + yb⃗. Set up 2 equations: 2x−y=8 and −3x−2y=−5. Solve. [2 marks]</div>
+        <div class="years"><span class="yr">Set 5</span><span class="yr">Set 9</span></div>
+      </div>
+      <div class="pat p3">
+        <div class="pat-head">
+          <span class="pat-num">PATTERN 3</span>
+          <span class="pat-title">Show vectors are linearly dependent/independent; find λ for collinear vectors</span>
+          <span class="pat-freq">Sets 5, 9, 10 — Common</span>
+        </div>
+        <div class="pat-body">If a⃗ = (1,2) and b⃗ = (−3,n), find n for a⃗ and b⃗ collinear. Use: a⃗ ∥ b⃗ ⟺ a₁b₂ − a₂b₁ = 0. OR: show a⃗, b⃗ are linearly dependent if one is scalar multiple of other. [2 marks]</div>
+        <div class="years"><span class="yr">Set 5</span><span class="yr">Set 9</span><span class="yr">Set 10</span></div>
+      </div>
+    </div>
+
+    <div class="panels">
+      <div class="panel">
+        <div class="panel-label"><span class="icon">📐</span> Coplanar Test Formula</div>
+        <div class="fbox">
+          Three vectors <span class="hi">p⃗, q⃗, r⃗</span> are coplanar if<br>
+          r⃗ = αp⃗ + βq⃗  for some scalars α, β<br><br>
+          OR if their scalar triple product = 0:<br>
+          <span class="hi">p⃗ · (q⃗ × r⃗) = 0</span><br><br>
+          For vectors expressed in terms of a⃗, b⃗, c⃗:<br>
+          p⃗ = l₁a⃗+m₁b⃗+n₁c⃗<br>
+          q⃗ = l₂a⃗+m₂b⃗+n₂c⃗<br>
+          r⃗ = l₃a⃗+m₃b⃗+n₃c⃗<br>
+          <span class="hi">Coplanar if det|lᵢ mᵢ nᵢ| = 0</span>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-label"><span class="icon">📐</span> Linear Dependence Formulas</div>
+        <div class="fbox">
+          <span class="hi">Collinear (2D):</span> a⃗∥b⃗ ⟺ a₁b₂−a₂b₁ = 0<br><br>
+          <span class="hi">Linear combination:</span><br>
+          r⃗ = xa⃗ + yb⃗<br>
+          → write component equations<br>
+          → solve simultaneously<br><br>
+          <span class="hi">Linearly dependent:</span><br>
+          vectors p⃗,q⃗,r⃗ are L.D. if<br>
+          αp⃗ + βq⃗ + γr⃗ = 0 has non-trivial solution<br><br>
+          <span class="hi">Unit vector along a⃗:</span><br>
+          â = a⃗ / |a⃗| = a⃗ / √(a₁²+a₂²+a₃²)
+        </div>
+      </div>
+      <div class="panel full">
+        <div class="panel-label"><span class="icon">🔢</span> Steps: Prove vectors are coplanar (the master proof)</div>
+        <ol class="steps">
+          <li>Write all three vectors in terms of a⃗, b⃗, c⃗ and extract the coefficient matrix: e.g. [1,−2,3], [−2,3,−4], [0,−1,2]</li>
+          <li>Calculate the 3×3 determinant of coefficient matrix.</li>
+          <li>= 1(3·2 − (−4)(−1)) − (−2)((−2)·2 − (−4)·0) + 3((−2)(−1)−3·0)</li>
+          <li>= 1(6−4) + 2(−4−0) + 3(2−0) = 2 − 8 + 6 = <strong>0</strong></li>
+          <li>Since determinant = 0, the vectors are coplanar. □</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="tip">
+      <div class="tip-label">⚡ Minimalist Strategy</div>
+      The coplanar proof is the same structure every time — extract the 3 coefficient rows, compute the 3×3 determinant, show it equals zero. Practise computing a 3×3 determinant quickly using cofactor expansion along row 1. The linear-combination question is just setting up and solving two simultaneous equations — easy 2 marks.
+    </div>
+  </div>
+
+  <!-- ══ Q16 ══ -->
+  <div class="q-section q16" id="q16">
+    <div class="q-header">
+      <div class="q-badge">16</div>
+      <div class="q-header-info">
+        <span class="q-tag">Group B · Q.No. 16</span>
+        <div class="q-title">Statistics — Skewness &amp; Karl Pearson's Coefficient</div>
+        <div class="q-marks">5 marks · [4+1] or [3+2] sub-parts</div>
+      </div>
+    </div>
+
+    <div class="alert ok">
+      <div class="alert-icon">✅</div>
+      <div>Q16 is <b>always statistics — skewness</b>. This is pure formula application with a frequency table. No theory derivation needed. If you memorise the two formulas below, this is reliable marks.</div>
+    </div>
+
+    <div class="patterns">
+      <div class="pat p1">
+        <div class="pat-head">
+          <span class="pat-num">PATTERN 1</span>
+          <span class="pat-title">Calculate Karl Pearson's coefficient of skewness from a frequency/wage table</span>
+          <span class="pat-freq">Sets 1, 3, 4, 6 — Dominant pattern</span>
+        </div>
+        <div class="pat-body">A table of wages / income ranges with number of workers/persons is given. Find mean, mode, SD, then compute Skₚ = (Mean − Mode)/SD. Interpret the result (negative = left skewed, positive = right skewed).</div>
+        <div class="years"><span class="yr">Set 1</span><span class="yr">Set 3</span><span class="yr">Set 4</span><span class="yr">Set 6</span></div>
+      </div>
+      <div class="pat p2">
+        <div class="pat-head">
+          <span class="pat-num">PATTERN 2</span>
+          <span class="pat-title">Examine symmetry using Bowley's or Pearson's skewness; state interpretation</span>
+          <span class="pat-freq">Sets 5, 9 — Common</span>
+        </div>
+        <div class="pat-body">Given raw data or frequency distribution, calculate skewness coefficient and state: if Sk &gt; 0 → positively skewed, Sk &lt; 0 → negatively skewed, Sk = 0 → symmetric. Interpret the distribution shape.</div>
+        <div class="years"><span class="yr">Set 5</span><span class="yr">Set 9</span></div>
+      </div>
+      <div class="pat p3">
+        <div class="pat-head">
+          <span class="pat-num">PATTERN 3</span>
+          <span class="pat-title">Combined mean and variance / Comparing two distributions (CV)</span>
+          <span class="pat-freq">Set 8 (Firm A vs Firm B)</span>
+        </div>
+        <div class="pat-body">Two firms given with n, mean, variance. Find combined mean and combined variance. Also state which firm is more consistent using CV = (SD/Mean)×100.</div>
+        <div class="years"><span class="yr">Set 8</span></div>
+      </div>
+    </div>
+
+    <div class="panels">
+      <div class="panel">
+        <div class="panel-label"><span class="icon">📐</span> All Essential Formulas</div>
+        <div class="fbox">
+          <span class="hi">Karl Pearson's Skewness:</span><br>
+          Skₚ = (Mean − Mode) / SD<br><br>
+          <span class="hi">OR (if mode not unique):</span><br>
+          Skₚ = 3(Mean − Median) / SD<br><br>
+          <span class="hi">SD (short-cut method):</span><br>
+          SD = h·√[ Σfd²/N − (Σfd/N)² ]<br>
+          where d = (x − A)/h, A = assumed mean<br><br>
+          <span class="hi">Mean from table:</span><br>
+          x̄ = A + h·(Σfd/N)<br><br>
+          <span class="hi">CV:</span> (SD/Mean) × 100<br><br>
+          <span class="grn">Sk = 0:</span> Symmetric<br>
+          <span class="blu">Sk &gt; 0:</span> Positively skewed (tail right)<br>
+          <span class="red">Sk &lt; 0:</span> Negatively skewed (tail left)
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-label"><span class="icon">🔢</span> Steps: Karl Pearson's from a table</div>
+        <ol class="steps">
+          <li>Find class mid-points (x). Set assumed mean A = middle class mid-point.</li>
+          <li>Find d = (x − A)/h where h = class width.</li>
+          <li>Compute fd and fd² columns. Sum them: Σfd, Σfd², N = Σf.</li>
+          <li>Mean = A + h(Σfd/N)</li>
+          <li>SD = h·√[Σfd²/N − (Σfd/N)²]</li>
+          <li>Find Mode: class with highest frequency; Mode = L + [(f₁−f₀)/(2f₁−f₀−f₂)]·h</li>
+          <li>Skₚ = (Mean − Mode)/SD. State interpretation.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="worked">
+      <div class="worked-label">📋 Typical Answer Structure (Set 3 type)</div>
+      <div class="worked-body">
+        <span class="step-line">Given: Income table 0–2, 2–4, 4–6, 6–8, 8–10 (000s) with f = 5,3,8,6,10</span><br>
+        Let A = 5 (mid of 4–6 class), h = 2<br>
+        Compute: Σf=32, Σfd=−10, Σfd²=68<br>
+        Mean = 5 + 2(−10/32) = 5 − 0.625 = <span class="hi">4.375</span><br>
+        SD = 2√[68/32 − (−10/32)²] = 2√[2.125−0.098] = 2√2.027 = <span class="hi">2.847</span><br>
+        Mode class = 8–10 (f=10 highest). Mode = 8+[(10−6)/(20−6−0)]·2 = <span class="hi">8.571</span><br>
+        Skₚ = (4.375 − 8.571)/2.847 = <span class="hi">−1.47</span> → Negatively skewed
+      </div>
+    </div>
+
+    <div class="tip">
+      <div class="tip-label">⚡ Minimalist Strategy</div>
+      Set up the table with columns: x (mid-point), f, d=(x−A)/h, fd, fd². Sum the last three columns. The rest is just plugging into 3 formulas: Mean, SD, Skₚ. The final answer always ends with "positively/negatively skewed" — never skip this sentence, it's a free mark.
+    </div>
+  </div>
+
+  <!-- ══ Q19 ══ -->
+  <div class="q-section q19" id="q19">
+    <div class="q-header">
+      <div class="q-badge">19</div>
+      <div class="q-header-info">
+        <span class="q-tag">Group B · Q.No. 19</span>
+        <div class="q-title">Newton-Raphson Method &nbsp;OR&nbsp; Mechanics (Forces / Dynamics)</div>
+        <div class="q-marks">5 marks · Full OR choice</div>
+      </div>
+    </div>
+
+    <div class="alert warn">
+      <div class="alert-icon">⚠️</div>
+      <div>Q19 always has an <b>OR</b> option. One option is Newton-Raphson (numerical methods). The other is Mechanics (forces or dynamics). <b>You only need to master ONE side of this OR</b> — pick Mechanics, it is purely formula-based and requires no deep theory.</div>
+    </div>
+
+    <div class="patterns">
+      <div class="pat p1">
+        <div class="pat-head">
+          <span class="pat-num">NEWTON-RAPHSON SIDE</span>
+          <span class="pat-title">Find root of f(x) = x³ − x − 4 = 0 (or similar cubic) in interval (1,2)</span>
+          <span class="pat-freq">Sets 1, 4, 6, 9, 10 — Very frequent</span>
+        </div>
+        <div class="pat-body">Apply x_{n+1} = xₙ − f(xₙ)/f'(xₙ). Start with x₀ = 1 or 2. Iterate 2–3 times. Stop when answer is stable to required decimal places. Answer ≈ 1.796 for x³−x−4=0.</div>
+        <div class="years"><span class="yr">Set 1</span><span class="yr">Set 4</span><span class="yr">Set 6</span><span class="yr">Set 9</span><span class="yr">Set 10</span></div>
+      </div>
+      <div class="pat p2">
+        <div class="pat-head">
+          <span class="pat-num">MECHANICS SIDE</span>
+          <span class="pat-title">Two particles/stones meeting on inclined plane or free fall</span>
+          <span class="pat-freq">Sets 3, 5 — Common mechanics type</span>
+        </div>
+        <div class="pat-body">A particle projected up from bottom + another dropped from top. Find when/where they meet. Use s₁ + s₂ = total height. OR: inclined plane — find velocity or time using v²=u²+2as, s=ut+½at².</div>
+        <div class="years"><span class="yr">Set 3</span><span class="yr">Set 5</span></div>
+      </div>
+      <div class="pat p3">
+        <div class="pat-head">
+          <span class="pat-num">MECHANICS SIDE</span>
+          <span class="pat-title">Forces: Resultant of two forces P and Q; prove resultant formula</span>
+          <span class="pat-freq">Sets 2, 3 — Statics type</span>
+        </div>
+        <div class="pat-body">Forces P and Q at angle θ. Resultant R = √(P²+Q²+2PQ cosθ). When θ changes or forces interchange, find new resultant or prove tan θ formula. [5 marks]</div>
+        <div class="years"><span class="yr">Set 2</span><span class="yr">Set 3</span></div>
+      </div>
+    </div>
+
+    <div class="panels">
+      <div class="panel">
+        <div class="panel-label"><span class="icon">📐</span> Newton-Raphson Formula</div>
+        <div class="fbox">
+          <span class="hi">Formula:</span><br>
+          x_{n+1} = xₙ − f(xₙ)/f'(xₙ)<br><br>
+          <span class="hi">For f(x) = x³ − x − 4 = 0:</span><br>
+          f'(x) = 3x² − 1<br>
+          x₀ = 2 (since f(1)=−4&lt;0, f(2)=2&gt;0)<br>
+          x₁ = 2 − f(2)/f'(2)<br>
+             = 2 − (8−2−4)/(12−1)<br>
+             = 2 − 2/11 = <span class="grn">1.818</span><br>
+          x₂ = 1.818 − f(1.818)/f'(1.818)<br>
+             ≈ <span class="grn">1.796</span><br>
+          x₃ ≈ <span class="grn">1.796</span> (converged ✓)
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-label"><span class="icon">📐</span> Mechanics Formulas (Dynamics)</div>
+        <div class="fbox">
+          <span class="hi">Three equations of motion:</span><br>
+          v = u + at<br>
+          s = ut + ½at²<br>
+          v² = u² + 2as<br><br>
+          <span class="hi">Free fall:</span> u=0, a=g=9.8 or 10 m/s²<br>
+          s = ½gt²<br><br>
+          <span class="hi">Projected upward:</span> a = −g<br>
+          Max height H = u²/2g<br>
+          Time to top = u/g<br><br>
+          <span class="hi">Two-body meeting:</span><br>
+          s₁ (down) + s₂ (up) = Total height H<br>
+          ½gt² + (ut − ½gt²) = H → ut = H
+        </div>
+      </div>
+      <div class="panel full">
+        <div class="panel-label"><span class="icon">🔢</span> Steps: Newton-Raphson in exam (write these exact steps)</div>
+        <ol class="steps">
+          <li>Write: "Let f(x) = [equation]. Then f'(x) = [derivative]."</li>
+          <li>Check sign change: f(a) and f(b) have opposite signs → root lies in (a,b). Take x₀ = a or b.</li>
+          <li>Apply formula: x₁ = x₀ − f(x₀)/f'(x₀). Show full calculation.</li>
+          <li>Apply again: x₂ = x₁ − f(x₁)/f'(x₁). Show calculation.</li>
+          <li>Apply again: x₃ = x₂ − f(x₂)/f'(x₂).</li>
+          <li>State: "Since x₂ ≈ x₃ ≈ 1.796, the root correct to 3 decimal places is <strong>1.796</strong>."</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="tip">
+      <div class="tip-label">⚡ Minimalist Strategy</div>
+      <strong>Choose Newton-Raphson</strong> — the equation changes slightly between years but the method is identical. The answer for x³−x−4=0 is always 1.796. Even if the equation is different, just follow the 6-step template above, show your working clearly, and you will score 4–5/5. The key examiner trick: always verify the sign change FIRST before starting iterations.
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- GROUP B: 8-mark questions          -->
+  <!-- ═══════════════════════════════════ -->
+  <div class="group-div">
+    <div class="group-line"></div>
+    <div class="group-label" style="color:var(--gold)">Group C — 8-Mark Questions</div>
+    <div class="group-line"></div>
+  </div>
+
+  <div class="alert ok">
+    <div class="alert-icon">✅</div>
+    <div><b>Group C structure:</b> 3 questions × 8 marks = 24 marks. Each question has 2–3 sub-parts. You choose which questions to attempt. Q20, Q21, Q22 are the question numbers in Group C. Marks are split as [2+2+4], [3+3+2], [2+3+3], etc.</div>
+  </div>
+
+  <!-- ══ Q20 ══ -->
+  <div class="q-section q20" id="q20">
+    <div class="q-header">
+      <div class="q-badge">20</div>
+      <div class="q-header-info">
+        <span class="q-tag">Group C · Q.No. 20 · 8 Marks</span>
+        <div class="q-title">Algebra Mix — Sets · Quadratic Equations · Sequences · Complex Numbers · Matrices</div>
+        <div class="q-marks">8 marks · [2+4+2] or [2+2+4] or [5+3] sub-parts</div>
+      </div>
+    </div>
+
+    <div class="patterns">
+      <div class="pat p1">
+        <div class="pat-head">
+          <span class="pat-num">PATTERN 1</span>
+          <span class="pat-title">Set theory proof + Sequence relation + Complex number proof</span>
+          <span class="pat-freq">Set 3 (D1): A∪(B∩C)=(A∪B)∩(A∪C) [2] + GP/HP relation [4] + |x+iy| proof [2]</span>
+        </div>
+        <div class="pat-body">Three-part Q20: (a) Prove set identity [2]. (b) a,b,c in GP → x,y,z in HP — prove [4]. (c) If x+iy = (a−ib)/(a+ib), show x²+y²=1 [2].</div>
+        <div class="years"><span class="yr">Set 3 D1</span></div>
+      </div>
+      <div class="pat p2">
+        <div class="pat-head">
+          <span class="pat-num">PATTERN 2</span>
+          <span class="pat-title">Real numbers / absolute value + log proof + quadratic equation roots</span>
+          <span class="pat-freq">Set 5 M1: |x+y|≤|x|+|y| [2] + log x/(y−z)=log y/(z−x)=log z/(x−y) ⟹ xˣ·yʸ·zᶻ=1 [3] + roots of α²β⁻¹ and β²α⁻¹ [3]</span>
+        </div>
+        <div class="pat-body">Prove triangle inequality for reals. Prove equal-ratio log identity. Form quadratic with new roots in terms of old roots α,β.</div>
+        <div class="years"><span class="yr">Set 5 M1</span></div>
+      </div>
+      <div class="pat p3">
+        <div class="pat-head">
+          <span class="pat-num">PATTERN 3</span>
+          <span class="pat-title">Logic/Set contradiction proof + quadratic root condition + complex modulus</span>
+          <span class="pat-freq">Set 10: p value for equal roots [4] + contradiction proof [2] + |x|²=|z|² proof [2]</span>
+        </div>
+        <div class="pat-body">Determine p so one root is square of other. Prove (p∧q)∧∼(p∨q) is contradiction. Prove x²=|x|² for complex numbers.</div>
+        <div class="years"><span class="yr">Set 10</span></div>
+      </div>
+    </div>
+
+    <div class="panels">
+      <div class="panel">
+        <div class="panel-label"><span class="icon">📐</span> Complex Number Key Formulas</div>
+        <div class="fbox">
+          z = a + ib, conjugate z̄ = a − ib<br>
+          <span class="hi">Modulus:</span> |z| = √(a²+b²)<br>
+          <span class="hi">|z|² = z·z̄</span><br>
+          <span class="hi">a + ib form:</span> multiply num &amp; denom by conjugate<br><br>
+          <span class="hi">Proof: |x+iy|² = x²+y²</span><br>
+          If x+iy = (a−ib)/(a+ib):<br>
+          Multiply by (a−ib)/(a−ib):<br>
+          = (a−ib)²/(a²+b²)<br>
+          Then x²+y² = |x+iy|² = |(a−ib)|²/|(a+ib)|²<br>
+          = (a²+b²)/(a²+b²) = <span class="grn">1 ✓</span>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-label"><span class="icon">📐</span> Log Identity Proof (Pattern 2)</div>
+        <div class="fbox">
+          Given: log x/(y−z) = log y/(z−x) = log z/(x−y) = k<br><br>
+          <span class="hi">Step 1:</span> log x = k(y−z), log y = k(z−x), log z = k(x−y)<br><br>
+          <span class="hi">Step 2:</span> Add all three:<br>
+          log x + log y + log z<br>
+          = k[(y−z)+(z−x)+(x−y)] = k·0 = 0<br><br>
+          <span class="hi">Step 3:</span> log(xyz) = 0<br>
+          ∴ xyz = 1 ✓<br><br>
+          <span class="hi">OR:</span> xˣ·yʸ·zᶻ = 1 (use x·logx + y·logy + z·logz = 0)
+        </div>
+      </div>
+      <div class="panel full">
+        <div class="panel-label"><span class="icon">🔢</span> Steps: Form equation with new roots α²β⁻¹ and β²α⁻¹</div>
+        <ol class="steps">
+          <li>Given: roots of ax²+bx+c=0 are α, β. So α+β = −b/a and αβ = c/a.</li>
+          <li>New roots: p = α²/β and q = β²/α.</li>
+          <li>Sum of new roots: p+q = α²/β + β²/α = (α³+β³)/(αβ) = (α+β)³−3αβ(α+β)) / αβ</li>
+          <li>Compute using values of (α+β) and αβ from step 1.</li>
+          <li>Product of new roots: pq = (α²/β)(β²/α) = αβ = c/a.</li>
+          <li>New equation: x² − (p+q)x + pq = 0. Substitute and simplify.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="tip">
+      <div class="tip-label">⚡ Minimalist Strategy</div>
+      Q20 gives you 3 sub-parts. In the exam, the 2-mark parts (set proof, complex modulus) are straightforward — attempt these first to secure 4 easy marks. The 4-mark part (sequence/log proof) needs the most care. For log ratio proofs, always use the "set each ratio = k" technique — it solves every such problem. For complex modulus proofs, multiply by conjugate.
+    </div>
+  </div>
+
+  <!-- ══ Q21 ══ -->
+  <div class="q-section q21" id="q21">
+    <div class="q-header">
+      <div class="q-badge">21</div>
+      <div class="q-header-info">
+        <span class="q-tag">Group C · Q.No. 21 · 8 Marks</span>
+        <div class="q-title">Analytic Geometry — Straight Lines &amp; Pair of Lines &nbsp;+&nbsp; Coordinates in Space</div>
+        <div class="q-marks">8 marks · [2+3+3] or [3+2+3] or [4+2+2] sub-parts</div>
+      </div>
+    </div>
+
+    <div class="patterns">
+      <div class="pat p1">
+        <div class="pat-head">
+          <span class="pat-num">PATTERN 1</span>
+          <span class="pat-title">Bisector of angle between two lines + pair of lines condition</span>
+          <span class="pat-freq">Sets 2, 5, 8, 10 — Most common</span>
+        </div>
+        <div class="pat-body">Find equation of bisectors of angles between 3x−2y−5=0 and 6x+2y+15=0. Also find angle between pair of lines ax²+2hxy+by²=0. Often: find perpendicular distance from a point, then identify which bisector contains origin. [2+3+3]</div>
+        <div class="years"><span class="yr">Set 2</span><span class="yr">Set 5</span><span class="yr">Set 8</span><span class="yr">Set 10</span></div>
+      </div>
+      <div class="pat p2">
+        <div class="pat-head">
+          <span class="pat-num">PATTERN 2</span>
+          <span class="pat-title">Direction cosines of line in 3D + angle between two lines in 3D</span>
+          <span class="pat-freq">Sets 1, 3, 4, 8, 9 — Very common for sub-part</span>
+        </div>
+        <div class="pat-body">Find direction cosines of a line with DRs proportional to 1,−3,2. Show that direction cosines of a line inclined equally to axes are ±1/√3, ±1/√3, ±1/√3. Find angle between two lines given their direction cosines. [3 marks]</div>
+        <div class="years"><span class="yr">Set 1</span><span class="yr">Set 3</span><span class="yr">Set 4</span><span class="yr">Set 9</span></div>
+      </div>
+      <div class="pat p3">
+        <div class="pat-head">
+          <span class="pat-num">PATTERN 3</span>
+          <span class="pat-title">Find equation of pair of lines, their point of intersection, or prove bisector formula</span>
+          <span class="pat-freq">Sets 4, 9, 10 — Common</span>
+        </div>
+        <div class="pat-body">Equations of two lines from 2x²+3xy+y²+5x+2y−3=0. Find their intersection point. OR: prove bisectors of ax²+2hxy+by²=0 are given by (x²−y²)/(a−b) = xy/h. [4 marks]</div>
+        <div class="years"><span class="yr">Set 4</span><span class="yr">Set 9</span><span class="yr">Set 10</span></div>
+      </div>
+    </div>
+
+    <div class="panels">
+      <div class="panel">
+        <div class="panel-label"><span class="icon">📐</span> Angle Bisector Formula</div>
+        <div class="fbox">
+          Lines: L₁ = a₁x+b₁y+c₁=0, L₂ = a₂x+b₂y+c₂=0<br><br>
+          <span class="hi">Bisectors:</span><br>
+          (a₁x+b₁y+c₁)/√(a₁²+b₁²)<br>
+          = ± (a₂x+b₂y+c₂)/√(a₂²+b₂²)<br><br>
+          <span class="hi">Bisector containing origin:</span><br>
+          Substitute (0,0) in each bisector equation and check sign of L₁(0,0)·L₂(0,0).<br>
+          If same sign → take + sign bisector.<br>
+          If diff sign → take − sign bisector.
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-label"><span class="icon">📐</span> Pair of Lines & 3D Formulas</div>
+        <div class="fbox">
+          <span class="hi">Angle between pair ax²+2hxy+by²=0:</span><br>
+          tan θ = 2√(h²−ab) / (a+b)<br>
+          Parallel: h²=ab<br>
+          Perpendicular: a+b=0<br><br>
+          <span class="hi">Direction cosines (l,m,n):</span><br>
+          l²+m²+n² = 1<br>
+          If DRs = a:b:c then<br>
+          l = a/√(a²+b²+c²), similarly m, n<br><br>
+          <span class="hi">Angle between 2 lines:</span><br>
+          cos θ = |l₁l₂+m₁m₂+n₁n₂|<br><br>
+          <span class="hi">Perpendicular:</span> l₁l₂+m₁m₂+n₁n₂=0
+        </div>
+      </div>
+      <div class="panel full">
+        <div class="panel-label"><span class="icon">🔢</span> Steps: Find lines from general 2nd-degree equation ax²+2hxy+by²+2gx+2fy+c=0</div>
+        <ol class="steps">
+          <li>Compare coefficients: identify a, b, c, h, g, f from given equation.</li>
+          <li>Check condition for pair of lines: abc+2fgh−af²−bg²−ch²=0. If yes, proceed.</li>
+          <li>Factorise: treat as quadratic in x (or y). Group terms and factorise into two linear factors.</li>
+          <li>Example: 6x²−xy−12y²+8x+28y−14=0 → factorise to (2x−3y+7)(3x+4y−2)=0.</li>
+          <li>Set each factor = 0: Line 1: 2x−3y+7=0. Line 2: 3x+4y−2=0.</li>
+          <li>Find intersection: solve simultaneously.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="tip">
+      <div class="tip-label">⚡ Minimalist Strategy</div>
+      The bisector question is the most predictable sub-part — it always uses the same ±formula. Write it, substitute, simplify into two separate equations. For direction cosines: DRs a,b,c → DCs = a/√(a²+b²+c²) etc. — this is just one formula applied three times. Even if you can't do the 4-mark factorisation, you can still score 4/8 from the bisector and direction cosine parts.
+    </div>
+  </div>
+
+  <!-- ══ Q22 ══ -->
+  <div class="q-section q22" id="q22">
+    <div class="q-header">
+      <div class="q-badge">22</div>
+      <div class="q-header-info">
+        <span class="q-tag">Group C · Q.No. 22 · 8 Marks</span>
+        <div class="q-title">Mixed: Pair of Straight Lines · Statistics · Complex · Probability · Determinants</div>
+        <div class="q-marks">8 marks · [2+3+3] or [4+2+2] sub-parts — most varied question</div>
+      </div>
+    </div>
+
+    <div class="alert warn">
+      <div class="alert-icon">⚠️</div>
+      <div>Q22 is the <b>most varied question</b> in the paper — different chapters appear here across different sets. However, 3 non-calculus patterns repeat strongly. Focus on these and skip any sub-parts that involve derivatives or integration.</div>
+    </div>
+
+    <div class="patterns">
+      <div class="pat p1">
+        <div class="pat-head">
+          <span class="pat-num">PATTERN 1</span>
+          <span class="pat-title">Determinant proof (identity) — always non-calculus and high marks</span>
+          <span class="pat-freq">Sets 3, 6, 7, 10 — Most reliable non-calculus sub-part</span>
+        </div>
+        <div class="pat-body">Prove determinant identity such as:<br>
+|(b+c)² a² bc; (c+a)² b² ca; (a+b)² c² ab| = (a−b)(b−c)(c−a)(a+b+c)(a²+b²+c²)<br>OR prove |1 a a²; 1 b b²; 1 c c²| = (b−c)(c−a)(a−b). [3–5 marks]</div>
+        <div class="years"><span class="yr">Set 3</span><span class="yr">Set 6</span><span class="yr">Set 7</span><span class="yr">Set 10</span></div>
+      </div>
+      <div class="pat p2">
+        <div class="pat-head">
+          <span class="pat-num">PATTERN 2</span>
+          <span class="pat-title">Probability (Compound / Total probability theorem)</span>
+          <span class="pat-freq">Sets 1, 5 — Probability proof sub-part</span>
+        </div>
+        <div class="pat-body">State and prove compound probability theorem P(A∩B)=P(A)·P(B|A). OR: Two students A and B — find probability both get scholarship, at least one, none. Independent events. [4 marks]</div>
+        <div class="years"><span class="yr">Set 1</span><span class="yr">Set 5</span></div>
+      </div>
+      <div class="pat p3">
+        <div class="pat-head">
+          <span class="pat-num">PATTERN 3</span>
+          <span class="pat-title">Pair of lines: find k so equation represents pair + angle between them</span>
+          <span class="pat-freq">Sets 3, 8 — Pair of lines sub-part</span>
+        </div>
+        <div class="pat-body">Find value of k so 2x²−7xy+3y²+5x−5y+k=0 may represent a pair of lines. Find the angle between them. [2+2=4 marks] Using abc+2fgh−af²−bg²−ch²=0 condition.</div>
+        <div class="years"><span class="yr">Set 3</span><span class="yr">Set 8</span></div>
+      </div>
+    </div>
+
+    <div class="panels">
+      <div class="panel">
+        <div class="panel-label"><span class="icon">📐</span> Condition for Pair of Lines</div>
+        <div class="fbox">
+          ax²+2hxy+by²+2gx+2fy+c=0<br>
+          represents a pair if:<br><br>
+          <span class="hi">Δ = abc + 2fgh − af² − bg² − ch² = 0</span><br><br>
+          <span class="hi">Angle between the pair:</span><br>
+          tan θ = 2√(h²−ab) / (a+b)<br><br>
+          <span class="hi">Parallel:</span>  h² = ab<br>
+          <span class="hi">Perp.:</span>    a + b = 0<br><br>
+          To find k: substitute in Δ=0, solve for k.
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-label"><span class="icon">📐</span> Probability Formulas</div>
+        <div class="fbox">
+          <span class="hi">Compound probability:</span><br>
+          P(A∩B) = P(A) · P(B|A)<br><br>
+          <span class="hi">Independent events:</span><br>
+          P(A∩B) = P(A) · P(B)<br><br>
+          <span class="hi">Addition theorem:</span><br>
+          P(A∪B) = P(A)+P(B)−P(A∩B)<br><br>
+          <span class="hi">At least one:</span><br>
+          P(A∪B) = 1 − P(Ā)·P(B̄)<br><br>
+          <span class="hi">Neither:</span><br>
+          P(Ā∩B̄) = P(Ā)·P(B̄)
+        </div>
+      </div>
+      <div class="panel full">
+        <div class="panel-label"><span class="icon">🔢</span> Steps: Vandermonde / Determinant Proof</div>
+        <ol class="steps">
+          <li>Write the determinant clearly. e.g. |1,a,a²; 1,b,b²; 1,c,c²|</li>
+          <li>Apply R₂ → R₂−R₁ and R₃ → R₃−R₁ (subtract first row from others).</li>
+          <li>Result: |1,a,a²; 0,(b−a),(b²−a²); 0,(c−a),(c²−a²)|</li>
+          <li>Factor: b²−a² = (b−a)(b+a). Take out (b−a) from R₂ and (c−a) from R₃.</li>
+          <li>Expand 2×2 remaining determinant: |1,(b+a); 1,(c+a)| = (c+a)−(b+a) = c−b</li>
+          <li>Full answer: (b−a)(c−a)(c−b) = (a−b)(b−c)(c−a) ✓</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="worked">
+      <div class="worked-label">📋 Find k for pair of lines: 2x²−7xy+3y²+5x−5y+k = 0</div>
+      <div class="worked-body">
+        a=2, h=−7/2, b=3, g=5/2, f=−5/2, c=k<br>
+        <span class="step-line">Condition: abc + 2fgh − af² − bg² − ch² = 0</span><br>
+        = 2(3)(k) + 2(−5/2)(5/2)(−7/2) − 2(25/4) − 3(25/4) − k(49/4)<br>
+        = 6k + 175/4 − 50/4 − 75/4 − 49k/4<br>
+        = 6k + 50/4 − 49k/4<br>
+        = (24k + 50 − 49k)/4 = (−k + 50)/4 = 0<br>
+        <span class="step-line">∴ k = 2</span>
+      </div>
+    </div>
+
+    <div class="tip">
+      <div class="tip-label">⚡ Minimalist Strategy</div>
+      Q22 is mixed — but you have a CHOICE of which sub-parts to answer (or which full Q22 version to attempt). <strong>Always attempt:</strong> (1) the determinant proof sub-part — it uses only row operations and is fully algebra, (2) the pair-of-lines k-value sub-part — it's just plugging into Δ=0. Avoid any sub-part that says "derivative", "integrate", "area under curve", or "continuity" — those are calculus and you're skipping them.
+    </div>
+  </div>
+
+  <!-- ── FINAL CHEAT SHEET ── -->
+  <div class="group-div">
+    <div class="group-line"></div>
+    <div class="group-label" style="color:var(--green)">⚡ Last-Night Quick Reference</div>
+    <div class="group-line"></div>
+  </div>
+
+  <div class="panels" style="margin-bottom:30px">
+    <div class="panel">
+      <div class="panel-label">Q12 — Matrices Definitions (1 mark each)</div>
+      <ul class="dot-list">
+        <li>Symmetric: A = Aᵀ</li>
+        <li>Skew-symmetric: A = −Aᵀ; diagonal = 0</li>
+        <li>A = ½(A+Aᵀ) + ½(A−Aᵀ)</li>
+        <li>Inverse: A⁻¹ = (1/|A|)·adj(A)</li>
+        <li>Singular: |A| = 0; Non-singular: |A| ≠ 0</li>
+        <li>AB possible if cols(A) = rows(B)</li>
+        <li>(AB)ᵀ = BᵀAᵀ</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <div class="panel-label">Q13 — Roots & Sequences</div>
+      <ul class="dot-list">
+        <li>α+β = −b/a, αβ = c/a (for ax²+bx+c=0)</li>
+        <li>Equal roots: D = b²−4ac = 0</li>
+        <li>S∞ of GP = a/(1−r), |r|&lt;1</li>
+        <li>AM·HM = GM² always</li>
+        <li>AM &gt; GM &gt; HM for unequal positives</li>
+        <li>Set proof: x∈LHS ⟺ x∈RHS (two directions)</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <div class="panel-label">Q15 — Vectors</div>
+      <ul class="dot-list">
+        <li>Coplanar test: det of coefficients = 0</li>
+        <li>Collinear (2D): a₁b₂ − a₂b₁ = 0</li>
+        <li>Linear combo: solve 2 equations simultaneously</li>
+        <li>Unit vector: â = a⃗/|a⃗|</li>
+        <li>|a⃗| = √(a₁²+a₂²+a₃²)</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <div class="panel-label">Q16 — Skewness</div>
+      <ul class="dot-list">
+        <li>Skₚ = (Mean − Mode) / SD</li>
+        <li>Mean = A + h(Σfd/N)</li>
+        <li>SD = h√[Σfd²/N − (Σfd/N)²]</li>
+        <li>Sk &lt; 0 → negatively skewed</li>
+        <li>Sk = 0 → symmetric</li>
+        <li>Always state interpretation!</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <div class="panel-label">Q19 — Newton-Raphson</div>
+      <ul class="dot-list">
+        <li>x_{n+1} = xₙ − f(xₙ)/f'(xₙ)</li>
+        <li>Check sign change first</li>
+        <li>For x³−x−4=0: answer = 1.796</li>
+        <li>Do 3 iterations, show full working</li>
+        <li>State "converged to 1.796" at end</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <div class="panel-label">Q21 &amp; Q22 — Geometry</div>
+      <ul class="dot-list">
+        <li>Bisectors: L₁/√(a₁²+b₁²) = ±L₂/√(a₂²+b₂²)</li>
+        <li>Pair angle: tan θ = 2√(h²−ab)/(a+b)</li>
+        <li>Pair condition: Δ = abc+2fgh−af²−bg²−ch²=0</li>
+        <li>DCs: l=a/√Σa², m=b/√Σa², n=c/√Σa²</li>
+        <li>cos θ = |l₁l₂+m₁m₂+n₁n₂|</li>
+        <li>Det proof: R₂−R₁, R₃−R₁ → factor → expand</li>
+      </ul>
+    </div>
+  </div>
+
+</div><!-- /page -->
+
+<footer>
+  Grade 11 Mathematics · HISSAN Pattern · Old is Gold Question Bank Analysis<br>
+  All content based on Q12–Q22 patterns across Sets 1–10 · No Calculus content included
+</footer>
+
+<script>
+  const navItems = document.querySelectorAll('.qnav-item');
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      navItems.forEach(n => n.classList.remove('active'));
+      item.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
